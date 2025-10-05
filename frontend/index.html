@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>REX</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <header>
+      <h1>REX</h1>
+      <p>Share recommendations with your friends</p>
+    </header>
+
+    <nav class="tabs">
+      <button class="tab-btn" data-tab="create" id="tab-create">Create</button>
+      <button class="tab-btn" data-tab="list" id="tab-list">My Rex</button>
+      <button class="tab-btn" data-tab="search" id="tab-search">Search</button>
+      <button class="tab-btn" data-tab="feed" id="tab-feed">Feed</button>
+    </nav>
+
+    <main>
+      <section id="create-section" data-tab="create">
+        <h2>Create a Rex</h2>
+        <form id="create-form">
+          <div class="row">
+            <label>User ID</label>
+            <input
+              type="text"
+              id="userId"
+              placeholder="your-username"
+              required
+            />
+          </div>
+          <div class="row">
+            <label>Title</label>
+            <input
+              type="text"
+              id="title"
+              placeholder="e.g., Best Sushi Spot"
+              required
+            />
+          </div>
+          <div class="row">
+            <label>Category</label>
+            <input
+              type="text"
+              id="category"
+              placeholder="Restaurant / Beauty / Clothing"
+              required
+            />
+          </div>
+          <div class="row">
+            <label>Description</label>
+            <textarea
+              id="description"
+              placeholder="Why you recommend it"
+            ></textarea>
+          </div>
+          <div class="row">
+            <label>Media URL</label>
+            <input type="url" id="mediaUrl" placeholder="https://..." />
+          </div>
+          <div class="row">
+            <label>Tags (comma separated)</label>
+            <input type="text" id="tags" placeholder="sushi, nyc, dinner" />
+          </div>
+          <button type="submit">Create</button>
+          <button type="button" id="seedButton">Seed Sample Rex</button>
+          <button type="button" id="loadMcAuleyButton">
+            Load Amazon Reviews (McAuley)
+          </button>
+          <span id="create-status" class="status"></span>
+        </form>
+      </section>
+
+      <section id="list-section" data-tab="list">
+        <h2>Your Rex</h2>
+        <div class="row">
+          <label>Filter by User ID</label>
+          <input type="text" id="filterUserId" placeholder="your-username" />
+          <button id="refreshList">Refresh</button>
+        </div>
+        <ul id="rexList"></ul>
+      </section>
+
+      <section id="search-section" data-tab="search">
+        <h2>Search Rex</h2>
+        <form id="search-form">
+          <div class="row">
+            <label>Question</label>
+            <input
+              type="text"
+              id="query"
+              placeholder="What are my friends recommending for ...?"
+              required
+            />
+          </div>
+          <div class="row">
+            <label>Restrict to User ID (optional)</label>
+            <input
+              type="text"
+              id="searchUserId"
+              placeholder="friend-username"
+            />
+          </div>
+          <div class="row">
+            <label>Use LLM</label>
+            <input type="checkbox" id="useLLM" checked />
+          </div>
+          <button type="submit">Search</button>
+        </form>
+        <div id="searchResults"></div>
+      </section>
+
+      <section id="feed-section" data-tab="feed" class="feed hidden">
+        <div id="feedContainer" class="feed-container"></div>
+        <div id="feedStatus" class="feed-status"></div>
+      </section>
+    </main>
+
+    <script src="/app.js"></script>
+  </body>
+</html>
